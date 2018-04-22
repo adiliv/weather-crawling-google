@@ -1,0 +1,21 @@
+*{
+    box-sizing: border-box;
+}
+
+.Form {
+  padding-top: 25px;
+}
+
+.Loading {
+  width: 150px;
+  margin: 0 auto;
+}
+
+.SpinnerImg {
+  height: 78px;
+}
+
+#getWeatherForm {
+    width:65%;
+    margin: auto;
+}
