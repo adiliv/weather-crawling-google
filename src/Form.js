@@ -31,7 +31,7 @@ class Form extends Component {
     loadCityWeatherData = (city_name) => {
       this.setState({ found: false });
       const url = `https://google.com/search?q=${city_name}+weather&hl=EN`;
-      axios.get(url).then(html => {  //is better than ajax because ajax needs server?
+      axios.get(url).then(html => {
         var $ = cheerio.load(html.data);
         var name = $("#wob_loc").text();
         var temp = $("#wob_tm").text() + "°C";
