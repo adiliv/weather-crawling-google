@@ -7,8 +7,8 @@ import './SingleWeatherBox.css';
 class WeatherListBoxes extends Component {
 
     renderWeather = () => {
-        var arr = this.props.weatherBoxes;
-        return arr.map((weather, index) => {
+        var cities = this.props.cities; 
+        return cities.map((weather, index) => {
           return <SingleWeatherBox key={index} {...weather} />
         }
       );
