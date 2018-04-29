@@ -8,27 +8,17 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {weatherBoxes:[
-      {name: "Tel Aviv",
-      temp: "27°C",
-      humid: "41%",
-      wind: "25km/h",
-      icon: "//s1.twnmm.com/images/en_us/icons/wxicons_large/4.png"},
-
-      {name: "Jerusalem",
-      temp: "25°C",
-      humid: "23%",
-      wind: "35km/h",
-      icon: "//s1.twnmm.com/images/en_us/icons/wxicons_large/4.png"}
-    ]}
+    this.state = {cities: [], city_names_to_search_on_load: ["Tel aviv", "Jerusalem", "Madrid", "Liverpool"]}
   }
 
-  submitWeather = (data) => {
-    var isNewCity = true;
-    var arr = this.state.weatherBoxes;
+  submitWeather = (searched_city) => {
+    let isNewCity = true;
+    let cities = this.state.cities;
+    console.log("all cities are:");
+    console.log(this.state.cities);
 
-    for (var post of arr) {
-      if(data.name === post.name) {
+    for (let city of cities) {
+      if(searched_city.name === city.name) {
         isNewCity = false;
         break;
       }
@@ -36,7 +26,7 @@ class App extends Component {
 
     if (isNewCity) {
       this.setState(prevState => ({
-        weatherBoxes: prevState.weatherBoxes.concat(data)
+        cities: prevState.cities.concat(searched_city)
       }));
     } else {
       alert("city already in list");
@@ -48,8 +38,8 @@ class App extends Component {
       <div className="App">
         <h1 className="main-title"> Weather crawling app </h1>
         <hr />
-        <Form submitWeather={this.submitWeather} />
-        <WeatherListBoxes weatherBoxes={this.state.weatherBoxes} />
+        <Form submitWeather={this.submitWeather} city_names_to_search_on_load={this.state.city_names_to_search_on_load} />
+        <WeatherListBoxes cities={this.state.cities} />
       </div>
     );
   }
